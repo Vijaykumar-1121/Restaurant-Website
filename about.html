@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Developers - Vibhav's Kitchen</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #C09873;
+            --primary-hover: #a98261;
+            --background-color: #FAF7F2;
+            --text-color: #333333;
+            --footer-bg-start: #4a5a56;
+            --footer-bg-end: #3E4C48;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+
+        #main-header {
+            background-color: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 8px;
+            transition: color 0.4s ease-out;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        #mobile-menu { transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; }
+        
+        .textured-bg {
+            background-color: var(--background-color);
+            background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+        }
+
+        .footer-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), linear-gradient(to right, var(--footer-bg-start), var(--footer-bg-end));
+        }
+        
+        /* IMPROVEMENT: Added subtle hover scale for interactive elements */
+        .social-link {
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="fixed top-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair md:hidden">Vibhav's Kitchen</a>
+            <nav class="hidden md:flex flex-1 items-center justify-end space-x-8">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="menus.html" class="nav-link">MENU</a>
+            </nav>
+            <div class="hidden md:flex flex-1 justify-center">
+                <a href="index.html" class="text-4xl font-playfair px-8">Vibhav's Kitchen</a>
+            </div>
+            <nav class="hidden md:flex flex-1 items-center justify-start space-x-8">
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="z-50 relative h-7 w-7">
+                    <svg id="hamburger-icon" class="absolute h-full w-full transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="absolute h-full w-full opacity-0 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="opacity-0 invisible fixed top-0 right-0 h-full w-full bg-[var(--background-color)] z-40 p-8 pt-24 text-center md:hidden">
+        <a href="index.html" class="block py-4 text-2xl font-lora">HOME</a>
+        <a href="menus.html" class="block py-4 text-2xl font-lora">MENU</a>
+        <a href="about.html" class="block py-4 text-2xl font-lora">ABOUT US</a>
+        <a href="contact.html" class="block py-4 text-2xl font-lora">CONTACT</a>
+    </div>
+
+    <main class="pt-24">
+        <section class="min-h-[70vh] flex items-center justify-center text-center py-20">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl md:text-8xl font-cormorant max-w-4xl mx-auto gsap-title">
+                    A Fusion of Passion for Food & Technology.
+                </h1>
+                <p class="text-lg mt-8 max-w-2xl mx-auto gsap-fade-in">
+                    This project was born from a simple idea: to create a digital presence as tasteful and inviting as the cuisine it represents. It's a story of code, creativity, and collaboration.
+                </p>
+            </div>
+        </section>
+
+        <div class="textured-bg py-20 md:py-32">
+            <div class="text-center container mx-auto px-6 mb-20">
+                 <h2 class="text-5xl md:text-7xl font-cormorant gsap-fade-in">Meet the Developers</h2>
+            </div>
+            <div class="space-y-20 md:space-y-32">
+                 <section class="container mx-auto px-6">
+                     <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                        <div class="gsap-slide-in-left">
+                            
+                            <img src="/Frontend/res/gallery/about/v.jpg" alt="Photo of Vijaykumar, Web Developer" class="w-80 h-80 object-cover rounded-full shadow-2xl mx-auto">
+                        </div>
+                        <div class="text-left gsap-fade-in">
+                            <h3 class="text-4xl md:text-5xl font-cormorant">Vijaykumar</h3>
+                            <p class="font-inter text-lg text-[var(--primary-color)] mt-1 mb-6">Student at SRM University AP</p>
+                            <p class="text-lg leading-relaxed mb-8">Web Developer | Aspiring Data-Scientist</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <a href="https://www.linkedin.com/in/uppu-vijaykumar-2a0251291/" target="_blank" rel="noopener noreferrer" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#linkedin-icon"></use></svg> <span>LinkedIn</span></a>
+                                <a href="https://github.com/Vijaykumar-1121" target="_blank" rel="noopener noreferrer" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#github-icon"></use></svg> <span>GitHub</span></a>
+                                <a href="https://www.instagram.com/umavijay9999/" target="_blank" rel="noopener noreferrer" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#instagram-icon"></use></svg> <span>Instagram</span></a>
+                                <a href="portfolio.html" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><use href="#link-icon"></use></svg> <span>Portfolio</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                 <section class="container mx-auto px-6">
+                     <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                        <div class="text-left md:order-last gsap-fade-in">
+                            <h3 class="text-4xl md:text-5xl font-cormorant">Bhavs</h3>
+                            <p class="font-inter text-lg text-[var(--primary-color)] mt-1 mb-6">Student at SRM University AP</p>
+                            <p class="text-lg leading-relaxed mb-8">Web Developer | Aspiring Data-Scientist</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#linkedin-icon"></use></svg> <span>LinkedIn</span></a>
+                                <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#github-icon"></use></svg> <span>GitHub</span></a>
+                                <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#instagram-icon"></use></svg> <span>Instagram</span></a>
+                                <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><use href="#link-icon"></use></svg> <span>Portfolio</span></a>
+                            </div>
+                        </div>
+                        <div class="md:order-first gsap-slide-in-right">
+                             
+                            <img src="#" alt="bhavs" class="w-80 h-80 object-cover rounded-full shadow-2xl mx-auto">
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                       <div class="text-left md:order-last gsap-fade-in">
+                           <h3 class="text-4xl md:text-5xl font-cormorant">Narasimha</h3>
+                           <p class="font-inter text-lg text-[var(--primary-color)] mt-1 mb-6">Student at SRM University AP</p>
+                           <p class="text-lg leading-relaxed mb-8">Web Developer | Aspiring Data-Scientist</p>
+                           <div class="grid grid-cols-2 gap-4">
+                               <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#linkedin-icon"></use></svg> <span>LinkedIn</span></a>
+                               <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#github-icon"></use></svg> <span>GitHub</span></a>
+                               <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#instagram-icon"></use></svg> <span>Instagram</span></a>
+                               <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><use href="#link-icon"></use></svg> <span>Portfolio</span></a>
+                           </div>
+                       </div>
+                       <div class="md:order-first gsap-slide-in-right">
+                            
+                           <img src="#" alt="bhavs" class="w-80 h-80 object-cover rounded-full shadow-2xl mx-auto">
+                       </div>
+                   </div>
+               </section>
+
+               <section class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                   <div class="text-left md:order-last gsap-fade-in">
+                       <h3 class="text-4xl md:text-5xl font-cormorant">Tariq</h3>
+                       <p class="font-inter text-lg text-[var(--primary-color)] mt-1 mb-6">Student at SRM University AP</p>
+                       <p class="text-lg leading-relaxed mb-8">Web Developer | Aspiring Data-Scientist</p>
+                       <div class="grid grid-cols-2 gap-4">
+                           <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#linkedin-icon"></use></svg> <span>LinkedIn</span></a>
+                           <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#github-icon"></use></svg> <span>GitHub</span></a>
+                           <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6"><use href="#instagram-icon"></use></svg> <span>Instagram</span></a>
+                           <a href="#" class="social-link flex items-center space-x-3 text-gray-600 hover:text-black"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><use href="#link-icon"></use></svg> <span>Portfolio</span></a>
+                       </div>
+                   </div>
+                   <div class="md:order-first gsap-slide-in-right">
+                        
+                       <img src="#" alt="bhavs" class="w-80 h-80 object-cover rounded-full shadow-2xl mx-auto">
+                   </div>
+               </div>
+           </section>
+            </div>
+        </div>
+        
+        <section class="py-24 md:py-32 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <div class="gsap-fade-in">
+                    <h2 class="text-5xl md:text-7xl font-cormorant mb-20">Our Toolkit</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+                    <div class="toolkit-card flex flex-col items-center justify-center p-6 bg-gray-700/50 rounded-lg transition-transform duration-300 hover:-translate-y-2">
+                        <img src="https://img.icons8.com/color/96/000000/html-5--v1.png" alt="HTML5" class="w-16 h-16"/>
+                        <h3 class="font-inter font-semibold text-lg mt-4">HTML5</h3>
+                    </div>
+                    <div class="toolkit-card flex flex-col items-center justify-center p-6 bg-gray-700/50 rounded-lg transition-transform duration-300 hover:-translate-y-2">
+                        <img src="https://img.icons8.com/color/96/000000/css3.png" alt="CSS3" class="w-16 h-16"/>
+                        <h3 class="font-inter font-semibold text-lg mt-4">CSS3</h3>
+                    </div>
+                    <div class="toolkit-card flex flex-col items-center justify-center p-6 bg-gray-700/50 rounded-lg transition-transform duration-300 hover:-translate-y-2">
+                        <img src="https://img.icons8.com/color/96/000000/javascript--v1.png" alt="JavaScript" class="w-16 h-16"/>
+                        <h3 class="font-inter font-semibold text-lg mt-4">JavaScript</h3>
+                    </div>
+                    <div class="toolkit-card flex flex-col items-center justify-center p-6 bg-gray-700/50 rounded-lg transition-transform duration-300 hover:-translate-y-2">
+                        <img src="https://img.icons8.com/color/96/000000/tailwindcss.png" alt="Tailwind CSS" class="w-16 h-16"/>
+                        <h3 class="font-inter font-semibold text-lg mt-4">Tailwind CSS</h3>
+                    </div>
+                    <div class="toolkit-card flex flex-col items-center justify-center p-6 bg-gray-700/50 rounded-lg transition-transform duration-300 hover:-translate-y-2">
+                        <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" alt="GSAP" class="w-16 h-16 p-2"/>
+                        <h3 class="font-inter font-semibold text-lg mt-4">GSAP</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-bg text-white font-inter py-16">
+        <div class="container mx-auto px-6 relative">
+            <div class="flex justify-center mb-8">
+                <h2 class="text-4xl font-playfair">Vibhav's Kitchen</h2>
+            </div>
+            <div class="absolute top-1/2 -translate-y-1/2 right-6 flex space-x-5">
+                <a href="#" aria-label="Facebook" class="hover:opacity-80 transition-opacity"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg></a>
+                <a href="#" aria-label="Instagram" class="hover:opacity-80 transition-opacity"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+            </div>
+            <div class="text-center">
+                <nav class="flex justify-center flex-wrap gap-x-8 gap-y-4 mb-8 text-white/90">
+                    <a href="index.html" class="hover:underline">HOME</a>
+                    <a href="about.html" class="hover:underline">ABOUT</a>
+                    <a href="menus.html" class="hover:underline">MENU</a>
+                    <a href="contact.html" class="hover:underline">CONTACT</a>
+                </nav>
+                <div class="space-x-4 text-sm mb-6 text-white/70">
+                     <a href="#" class="hover:underline">Terms & Conditions</a>
+                     <span>|</span>
+                     <a href="#" class="hover:underline">Privacy Policy</a>
+                </div>
+                <p class="text-xs text-white/60">Developed by Team Vrushabha Rashi</p>
+            </div>
+        </div>
+    </footer>
+    
+    <svg class="absolute w-0 h-0">
+      <defs>
+        <path id="linkedin-icon" fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        <path id="github-icon" fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        <path id="instagram-icon" fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664 4.771 4.919 4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/>
+        <path id="link-icon" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+      </defs>
+    </svg>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // --- MOBILE MENU ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // IMPROVEMENT: Simplified menu toggle logic
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('invisible');
+                mobileMenu.classList.toggle('opacity-0');
+                hamburgerIcon.classList.toggle('opacity-0');
+                closeIcon.classList.toggle('opacity-0');
+            };
+
+            menuButton.addEventListener('click', toggleMenu);
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // --- UNIVERSAL SCROLL ANIMATIONS ---
+            const animatedElements = gsap.utils.toArray('.gsap-fade-in, .gsap-slide-in-left, .gsap-slide-in-right, .gsap-title, .toolkit-card');
+            animatedElements.forEach((el, i) => {
+                let x = 0;
+                let y = el.classList.contains('gsap-title') ? 20 : 50;
+                if (el.classList.contains('gsap-slide-in-left')) x = -100;
+                if (el.classList.contains('gsap-slide-in-right')) x = 100;
+                if (el.classList.contains('toolkit-card')) y = 40;
+
+                gsap.from(el, {
+                    opacity: 0,
+                    y: y,
+                    x: x,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    delay: el.classList.contains('toolkit-card') ? i * 0.05 : 0, 
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
